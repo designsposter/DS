@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ប្រវត្តិបញ្ជាទិញ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Khmer OS Siemreap', sans-serif;
+  }
+
+  .main-header {
+    background-color: #1976d2;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .nav-menu a:hover {
+    text-decoration: underline;
+  }
+
+  .user-section {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+    body {
+      font-family: 'Khmer OS Siemreap', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: rgb(8, 8, 8);
+      text-align: center;
+      padding: 15px;
+    }
+    h1 {
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .order {
+      background: white;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .order h3 {
+      margin: 0 0 10px;
+      color: #1976d2;
+    }
+
+    .order p {
+      margin: 5px 0;
+    }
+
+    .empty {
+      text-align: center;
+      color: gray;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ HEADER -->
+  <div class="header">
+    <div class="logo">
+      <img src="/logo.png" alt="logo">
+      <span>Designs Poster<br><small style="font-size: 12px;">PHONES SALE</small></span>
+    </div>
+    <div class="nav">
+      <a href="index.html">HOME<i class="fa-solid fa-tag"></i></a>
+      <a href="products.html">PRODUCTS<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="cart.html">CART<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="checkout.html">CHECKOUT<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="OrderHistory.html">ODER HISTORY<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="login.html" class="gold">LOGIN<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="logout.html" class="gold">LOGOUT<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#"><img src="/Cambodia.png" class="flag" alt="Khmer Flag"></a>
+    </div>
+  </div>
+
+<script>
+  // Show user info
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userSection = document.getElementById("userSection");
+
+  if (loggedInUser) {
+    userSection.innerHTML = `
+      🙋 <strong>${loggedInUser.name}</strong> |
+      <a href="logout.html" style="color:#fff;text-decoration: underline;">ចាកចេញ</a>
+    `;
+  } else {
+    userSection.innerHTML = `
+      <a href="login.html" style="color:#fff; text-decoration: underline;">ចូល / ចុះឈ្មោះ</a>
+    `;
+  }
+
+  // Toggle nav menu on small screen
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+  <header>
+    <h1>ប្រវត្តិបញ្ជាទិញ</h1>
+  </header>
+
+  <main id="history">
+    <!-- JS will render orders here -->
+  </main>
+
+  <script>
+    const historyContainer = document.getElementById("history");
+    const orders = JSON.parse(localStorage.getItem("orderHistory")) || [];
+
+    if (orders.length === 0) {
+      historyContainer.innerHTML = `<p class="empty">🗒️ មិនមានប្រវត្តិបញ្ជាទិញទេ។</p>`;
+    } else {
+      orders.reverse().forEach((order, index) => {
+        const orderDiv = document.createElement("div");
+        orderDiv.className = "order";
+
+        const itemCount = order.items.length;
+        orderDiv.innerHTML = `
+          <h3>បញ្ជាទិញលេខ ${orders.length - index}</h3>
+          <p>🕒 ថ្ងៃ/ម៉ោង: ${order.date}</p>
+          <p>👤 អតិថិជន: ${order.customer.name} (${order.customer.phone})</p>
+          <p>📦 ចំនួនទំនិញ: ${itemCount}</p>
+          <p>💵 តម្លៃសរុប: $${order.total.toFixed(2)}</p>
+        `;
+
+        historyContainer.appendChild(orderDiv);
+      });
+    }
+  </script>
+
+</body>
+</html>

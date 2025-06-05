@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ចាកចេញ...</title>
+  <script>
+    // Clear session
+    localStorage.removeItem("loggedInUser");
+
+    // Optional: clear cart, etc.
+    // localStorage.removeItem("cart");
+
+    // Redirect to home after 1s
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000);
+  </script>
+  <style>
+    body {
+      font-family: 'Khmer OS Siemreap', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h2 {
+      color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+    
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Khmer OS Siemreap', sans-serif;
+  }
+
+  .main-header {
+    background-color: #1976d2;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .nav-menu a:hover {
+    text-decoration: underline;
+  }
+
+  .user-section {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Show user info
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userSection = document.getElementById("userSection");
+
+  if (loggedInUser) {
+    userSection.innerHTML = `
+      🙋 <strong>${loggedInUser.name}</strong> |
+      <a href="logout.html" style="color:#fff;text-decoration: underline;">ចាកចេញ</a>
+    `;
+  } else {
+    userSection.innerHTML = `
+      <a href="login.html" style="color:#fff; text-decoration: underline;">ចូល / ចុះឈ្មោះ</a>
+    `;
+  }
+
+  // Toggle nav menu on small screen
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+  <h2>កំពុងចាកចេញ...</h2>
+</body>
+</html>

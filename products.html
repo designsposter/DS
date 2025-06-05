@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thet-sale</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: 'Khmer OS Siemreap', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+  margin: 5px 0 10px;
+}
+
+.add-to-cart {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'Khmer OS Siemreap', sans-serif;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+  <!-- ✅ HEADER -->
+  <div class="header">
+    <div class="logo">
+      <img src="/logo.png" alt="logo">
+      <span>Designs Poster<br><small style="font-size: 12px;">PHONES SALE</small></span>
+    </div>
+    <div class="nav">
+      <a href="index.html">HOME<i class="fa-solid fa-tag"></i></a>
+      <a href="products.html">PRODUCTS<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="cart.html">CART<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="checkout.html">CHECKOUT<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="OrderHistory.html">ODER HISTORY<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="login.html" class="gold">LOGIN<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="logout.html" class="gold">LOGOUT<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#"><img src="/Cambodia.png" class="flag" alt="Khmer Flag"></a>
+    </div>
+  </div>
+  <h1 class="section-title">បញ្ជីផលិតផល</h1>
+
+  <div class="product-grid">
+    <!-- Product Card 1 -->
+    <div class="product-card">
+      <img src="/logo1.jpg" alt="iPhone 15">
+      <h2></h2>
+      <p class="price"></p>
+      <button class="add-to-cart"></button>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="product-card">
+      <img src="/logo2.jpg" alt="Samsung Galaxy S24">
+      <h2>Samsung Galaxy S24</h2>
+      <p class="price">$999</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div class="product-card">
+      <img src="/logo3.jpg" alt="Xiaomi 14 Pro">
+      <h2>Xiaomi 14 Pro</h2>
+      <p class="price">$850</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+
+    <!-- Repeat card with different content -->
+    <div class="product-card">
+      <img src="/logo4.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="/logo5.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="/logo6.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="/logo7.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+    <div class="product-card">
+      <img src="oppo-reno11.jpg" alt="Oppo Reno11">
+      <h2>Oppo Reno11</h2>
+      <p class="price">$680</p>
+      <button class="add-to-cart">🛒 បញ្ចូលរទេះ</button>
+    </div>
+
+    <!-- ការចម្លងកាតបន្ថែមបានតាមចំនួនដែលចង់បង្ហាញ -->
+  </div>
+
+</body>
+</html>

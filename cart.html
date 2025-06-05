@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>រទេះទំនិញ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Khmer OS Siemreap', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: rgb(9, 9, 9);
+      text-align: center;
+      padding: 15px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .cart-container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .item {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+
+    .info {
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .info h3 {
+      margin: 0;
+    }
+
+    .info p {
+      margin: 5px 0;
+      color: green;
+    }
+
+    .item button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .summary {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .checkout-btn {
+      margin-top: 10px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .empty {
+      text-align: center;
+      color: gray;
+      margin-top: 50px;
+    }
+  </style>
+
+</head>
+<body>
+  <!-- ✅ HEADER -->
+  <div class="header">
+    <div class="logo">
+      <img src="/logo.png" alt="logo">
+      <span>Designs Poster<br><small style="font-size: 12px;">PHONES SALE</small></span>
+    </div>
+    <div class="nav">
+      <a href="index.html">HOME<i class="fa-solid fa-tag"></i></a>
+      <a href="products.html">PRODUCTS<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="cart.html">CART<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="checkout.html">CHECKOUT<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="OrderHistory.html">ODER HISTORY<i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="login.html" class="gold">LOGIN<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="logout.html" class="gold">LOGOUT<i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#"><img src="/Cambodia.png" class="flag" alt="Khmer Flag"></a>
+    </div>
+  </div>
+
+<script>
+  // Show user info
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userSection = document.getElementById("userSection");
+
+  if (loggedInUser) {
+    userSection.innerHTML = `
+      🙋 <strong>${loggedInUser.name}</strong> |
+      <a href="logout.html" style="color:#fff;text-decoration: underline;">ចាកចេញ</a>
+    `;
+  } else {
+    userSection.innerHTML = `
+      <a href="login.html" style="color:#fff; text-decoration: underline;">ចូល / ចុះឈ្មោះ</a>
+    `;
+  }
+
+  // Toggle nav menu on small screen
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+  <header>
+    <h1>រទេះទំនិញរបស់អ្នក</h1>
+  </header>
+
+  <main class="cart-container" id="cart">
+    <!-- JS will inject cart items here -->
+  </main>
+
+  <script>
+    const cartContainer = document.getElementById("cart");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+      cartContainer.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = `<p class="empty">🛒 រទេះទំនិញគ្មានទំនិញទេ!</p>`;
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "item";
+
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="info">
+            <h3>${item.name}</h3>
+            <p>$${item.price}</p>
+          </div>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+
+        cartContainer.appendChild(itemDiv);
+      });
+
+      const summary = document.createElement("div");
+      summary.className = "summary";
+      summary.innerHTML = `
+        <p>សរុបតម្លៃ: <strong>$${total.toFixed(2)}</strong></p>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+      `;
+      cartContainer.appendChild(summary);
+    }
+
+    function removeItem(index) {
+      if (confirm("តើអ្នកពិតជាចង់លុបទំនិញនេះមែនទេ?")) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+    }
+
+    function proceedToCheckout() {
+      alert("✅ ទៅកាន់ទំព័របង់ប្រាក់...");
+      // នៅទីនេះអាចនាំទៅ checkout.html ឬបង្កើត dynamic checkout
+      window.location.href = "checkout.html"; 
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
